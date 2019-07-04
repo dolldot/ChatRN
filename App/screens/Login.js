@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
-import { View, Stylesheet, TextInput, Text, TouchableHighlight, AsyncStorage } from 'react-native';
+import { View, TextInput, Text, StyleSheet, TouchableHighlight, TouchableOpacity, AsyncStorage } from 'react-native';
 import axios from 'axios';
+import {color} from '../config/color';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 class Login extends Component {
     constructor() {
         super();
         this.state = {
             email: '',
-            password: ''
+            password: '',
+            hidePassword: true,    
         }
     }
 
@@ -15,15 +18,13 @@ class Login extends Component {
         const { navigate } = this.props.navigation;
         const { email, password } = this.state;
 
-        axios.post('http://192.168.0.22:3000/users/login', {
+        axios.post('http://192.168.0.22:3333/api/v1/auth/login', {
             email: email,
             password: password
         })
         .then(async function (response) {
-            var token = response.data.access_token;
+            var token = response.data.token;
             await AsyncStorage.setItem("token", token);
-            console.log(response.data)
-            console.log(token);
             navigate('AuthLoading');
         })
         .catch(function(error) {
@@ -44,22 +45,72 @@ class Login extends Component {
         })
     }
 
+    _showPass = () => {
+        this.setState({
+            hidePassword: !this.state.hidePassword
+        })
+    }
+
     render() {
         return (
-            <View style={{flex: 1, justifyContent: 'center', paddingLeft: 10, paddingRight: 10}}>
-                <View sytle={{backgroundColor: 'orange', borderWidth: 1}}>
-                    <Text style={{fontWeight: 'bold', justifyContent: 'center', alignSelf: 'center', marginBottom: 10, fontSize: 20}}>ENTER CHAT ROOM</Text>
-                    <TextInput style={{height: 40, borderColor: 'orangered', borderWidth: 2, paddingLeft: 10, marginBottom: 10, borderRadius: 20}} onChangeText={this._pushEmail} value={this.state.email} placeholder="Email" />
+            <View style={styles.container}>
+                <Text style={{fontWeight: 'bold', justifyContent: 'center', alignSelf: 'center', marginBottom: 10, fontSize: 20, color: color.white}}>ENTER CHAT ROOM</Text>
 
-                    <TextInput style={{height: 40, borderColor: 'orangered', borderWidth: 2, paddingLeft: 10, marginBottom: 10, borderRadius: 20}} onChangeText={this._pushPass} value={this.state.password} placeholder="Password" secureTextEntry={true}/>
-                    
-                    <TouchableHighlight onPress={this._loginUser} style={{ justifyContent: 'center', backgroundColor: 'orangered', padding: 15, borderRadius: 20}}>
-                        <Text style={{color: 'white', fontWeight: 'bold', alignSelf: 'center'}}>LOGIN</Text>
-                    </TouchableHighlight>
+                <TextInput style={styles.inputEmail} onChangeText={this._pushEmail} value={this.state.email} placeholder="Email" />
+                
+                <View style={styles.inputPass}>
+                    <TextInput style={{paddingLeft: 10, flex: 6}} onChangeText={this._pushPass} value={this.state.password} placeholder="Password" secureTextEntry={this.state.hidePassword}/>
+                    <TouchableOpacity style={{flex: 1, justifyContent: 'center', alignItems: 'center'}} onPress={() => {this._showPass()}}>
+                        <Ionicons name="md-eye" size={30} color="black" />
+                    </TouchableOpacity>
                 </View>
+                
+                
+                <TouchableHighlight onPress={this._loginUser} style={styles.loginButton} underlayColor="rgba(3, 3, 3, 0.5)">
+                    <Text style={styles.textLoginButton}>LOGIN</Text>
+                </TouchableHighlight>
             </View>
         )
     }
 }
 
 export default Login;
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1, 
+        justifyContent: 'center', 
+        paddingLeft: 10, 
+        paddingRight: 10, 
+        backgroundColor: color.primary
+    },
+    inputEmail: {
+        height: 50, 
+        borderColor: color.primaryDark, 
+        borderWidth: 2, 
+        paddingLeft: 10, 
+        marginBottom: 10, 
+        borderRadius: 10, 
+        backgroundColor: color.white
+    },
+    inputPass: {
+        flexDirection: 'row', 
+        height: 50, 
+        borderColor: color.primaryDark, 
+        borderWidth: 2, 
+        marginBottom: 10, 
+        borderRadius: 10, 
+        backgroundColor: color.white
+    },
+    loginButton: {
+        justifyContent: 'center', 
+        backgroundColor: color.primaryDark, 
+        height: 50, 
+        borderRadius: 10
+    },
+    textLoginButton: {
+        color: color.white, 
+        fontWeight: 'bold', 
+        alignSelf: 'center'
+    }
+})

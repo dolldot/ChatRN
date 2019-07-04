@@ -1,12 +1,19 @@
 import { createStackNavigator, createAppContainer, createSwitchNavigator } from 'react-navigation';
 
 import HomeScreen from './App/screens/Home';
+import RoomScreen from './App/screens/Room';
 import LoadingScreen from './App/screens/Loading';
 import LoginScreen from './App/screens/Login';
 
 const AppStack = createStackNavigator({
     Home: {
         screen: HomeScreen,
+        navigationOptions: {
+            header: null
+        }
+    },
+    Room: {
+        screen: RoomScreen,
         navigationOptions: {
             header: null
         }
