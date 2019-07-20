@@ -1,10 +1,10 @@
 # Table of Contents
 
-- [Introduction](https://github.com/dolldot/ChatRN#introduction)
-- [Features](https://github.com/dolldot/ChatRN#features)
-- [Requirements](https://github.com/dolldot/ChatRN#requirements)
-- [Screenshots](https://github.com/dolldot/ChatRN#screenshot)
-- [Contributors](https://github.com/dolldot/ChatRN#contributors)
+- [Introduction](#introduction)
+- [Features](#features)
+- [Requirements](#requirements)
+- [Screenshots](#screenshot)
+- [Contributors](#contributors)
 
 ## Related Project
 
@@ -19,8 +19,8 @@ Chat App with react native and express
 - more
 
 ## Requirements
-- [npm](https://www.npmjs.com/get-npm)
-- [react-native](https://facebook.github.io/react-native/)
+- [`npm`](https://www.npmjs.com/get-npm)
+- [`react-native`](https://facebook.github.io/react-native/)
 
 ## How To Run
 1. Clone this repository
@@ -34,7 +34,7 @@ npm install
 ```
 
 ## Screenshoot
-<div style="text-align:center">
+<div align="center">
 <img src="https://aliyula.com/wp-content/uploads/2019/07/Screenshot_2019-07-19-20-27-12-309_com.chat_.png" width=200 alt="screenshot login">
 <img src="https://aliyula.com/wp-content/uploads/2019/07/Screenshot_2019-07-19-20-26-33-745_com.chat_.png" width=200 alt="screenshot home">
 <img src="https://aliyula.com/wp-content/uploads/2019/07/Screenshot_2019-07-19-20-27-00-313_com.chat_.png" width=200 alt="screenshot chat room">
@@ -42,4 +42,7 @@ npm install
 
 ## Website
 
-## Contributors
+<a href="#">
+  <img src="https://img.shields.io/badge/Project-Website-blue.svg"/>
+</a>
+
