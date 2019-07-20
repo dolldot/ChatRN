@@ -34,8 +34,11 @@ npm install
 ```
 
 ## Screenshoot
-
-<img src="https://aliyula.com/wp-content/uploads/2019/07/Screenshot_2019-07-19-20-27-12-309_com.chat_.png" width=200>
+<div style="text-align:center">
+<img src="https://aliyula.com/wp-content/uploads/2019/07/Screenshot_2019-07-19-20-27-12-309_com.chat_.png" width=200 alt="screenshot login">
+<img src="https://aliyula.com/wp-content/uploads/2019/07/Screenshot_2019-07-19-20-26-33-745_com.chat_.png" width=200 alt="screenshot home">
+<img src="https://aliyula.com/wp-content/uploads/2019/07/Screenshot_2019-07-19-20-27-00-313_com.chat_.png" width=200 alt="screenshot chat room">
+</div>
 
 ## Website
 
